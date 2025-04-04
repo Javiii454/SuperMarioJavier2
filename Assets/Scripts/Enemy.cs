@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     //Movimiento
@@ -14,7 +14,13 @@ public class Enemy : MonoBehaviour
     private AudioSource _audioSource;
     //Audio
     public AudioClip audioClip;
-    
+    public AudioClip hitSFX;
+    public AudioClip goombaDeathSFX;
+    public float maxHealth = 5;         //La vida es un mierdon historico, ayudame silksong tytyty.
+    public float currentHealth;
+    private Slider healthBar;
+    private GameManager gameManager;
+
 
     void Awake()
     {
@@ -22,11 +28,16 @@ public class Enemy : MonoBehaviour
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
         boxCollider = GetComponent<BoxCollider2D>();
+        healthBar = GetComponentInChildren<Slider>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     void Start()
     {
         enemySpeed = 0;
+        currentHealth = maxHealth;
+        healthBar.maxValue = maxHealth;
+        healthBar.value = maxHealth;
     }
 
     void FixedUpdate()
@@ -36,13 +47,29 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
+        gameManager.Kills();
+        _audioSource.PlayOneShot(goombaDeathSFX);
         direction = 0;
         _rigidBody.gravityScale = 0;
         _animator.SetTrigger("IsDead");
         boxCollider.enabled = false;
         Destroy(gameObject, 0.3f);
     }
-    
+    public void TakeDamage(float damage)
+    {
+        
+        _audioSource.PlayOneShot(hitSFX);
+        Debug.Log("Daño recibido?");
+        currentHealth-= damage;
+        healthBar.value = currentHealth;
+        
+
+        if(currentHealth <=0)
+        {
+            Death();
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))

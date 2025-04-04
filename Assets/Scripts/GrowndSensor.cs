@@ -8,6 +8,7 @@ public class GrowndSensor : MonoBehaviour
     public bool isGrounded;
     private Enemy _enemyScript;
     public Rigidbody2D rigidBody;
+    public float jumpDamage = 5;
 
     void Awake()
     {
@@ -25,7 +26,7 @@ public class GrowndSensor : MonoBehaviour
         {
             rigidBody.AddForce(Vector2.up * 20, ForceMode2D.Impulse);
             _enemyScript = collider.gameObject.GetComponent<Enemy>();
-            _enemyScript.Death();
+            _enemyScript.TakeDamage(jumpDamage);
         }
     }
 

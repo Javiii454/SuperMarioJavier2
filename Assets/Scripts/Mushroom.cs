@@ -41,6 +41,7 @@ public class Mushroom : MonoBehaviour
         {
             PlayerControl playerScript = collision.gameObject.GetComponent<PlayerControl>();
             playerScript.canShoot = true;
+            playerScript.powerUpTimer = 0;
             StartCoroutine(MushroomTaken());
         }
     }
