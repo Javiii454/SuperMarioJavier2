@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: StudioTanks
   productName: SuperMario
-  defaultCursor: {fileID: 2800000, guid: 4054a37d80c9beb47aa647ff27d87cda, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 01153743000e756498c19390367b1853, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
