@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class SoundManager : MonoBehaviour
 
 {
@@ -11,7 +11,7 @@ public class SoundManager : MonoBehaviour
     private GameManager _gameManager;
 
     //Cronometro
-    public float delay = 5;
+    public float delay = 8;
     public float timer;
     private bool _timerFinished = false;
 
@@ -76,6 +76,10 @@ public class SoundManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         _audioSource.PlayOneShot(gameOver);
+
+        yield return new WaitForSeconds(delay);
+
+        SceneManager.LoadScene(2);
     }
     public void Win()
     {

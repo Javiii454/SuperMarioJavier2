@@ -9,7 +9,7 @@ public class GrowndSensor : MonoBehaviour
     private Enemy _enemyScript;
     public Rigidbody2D rigidBody;
     public float jumpDamage = 5;
-
+    private PlayerControl playerControl;
     void Awake()
     {
         rigidBody = GetComponentInParent<Rigidbody2D>();
@@ -28,6 +28,12 @@ public class GrowndSensor : MonoBehaviour
             _enemyScript = collider.gameObject.GetComponent<Enemy>();
             _enemyScript.TakeDamage(jumpDamage);
         }
+        if(collider.gameObject.layer == 8)
+        {
+            playerControl = GetComponentInParent<PlayerControl>();
+            playerControl.Death();
+        }
+
     }
 
     void OnTriggerStay2D(Collider2D collider)
