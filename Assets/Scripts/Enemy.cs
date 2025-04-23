@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        enemySpeed = 0;
+        
         currentHealth = maxHealth;
         healthBar.maxValue = maxHealth;
         healthBar.value = maxHealth;
@@ -95,11 +95,13 @@ public class Enemy : MonoBehaviour
 
     void OnBecameVisible()
     {
-        enemySpeed = 2;
+        direction = 1;
+        gameManager.enemiesInScreen.Add(gameObject);
     }
 
     void OnBecameInvisible()
     {
-        enemySpeed = 0;
+        direction = 0;
+        gameManager.enemiesInScreen.Remove(gameObject);
     }
 }

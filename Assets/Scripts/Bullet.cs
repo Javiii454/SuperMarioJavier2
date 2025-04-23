@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
             BulletDeath();
         }
 
-        if(collider.gameObject.layer == 3)
+        if(collider.gameObject.CompareTag("Tuberia"))
         {
             BulletDeath();
         }

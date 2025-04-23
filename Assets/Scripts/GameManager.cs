@@ -14,9 +14,16 @@ public class GameManager : MonoBehaviour
     public Text coinsText;
     private int kills = 0;
     public Text killsText;    
+    public AudioSource _audioSource;
+    public AudioClip nPressedSFX;
+    
+
+    public List<GameObject> enemiesInScreen; 
 
     void Awake()
     {
+        _audioSource = FindObjectOfType<SoundManager>().GetComponent<AudioSource>();
+        
         _soundManager = FindObjectOfType<SoundManager>().GetComponent<SoundManager>();
     }
     void Start()
@@ -29,6 +36,16 @@ public class GameManager : MonoBehaviour
         if(Input.GetButtonDown("Pause"))
         {
             Pause();
+        }
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+        
+            foreach(GameObject enemy in enemiesInScreen)
+            {
+               Enemy enemyScript = enemy.GetComponent<Enemy>();
+               enemyScript.Death();
+            }
+            _audioSource.PlayOneShot(nPressedSFX);
         }
     }
     public void MainMenu()
