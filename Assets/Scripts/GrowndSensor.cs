@@ -10,6 +10,7 @@ public class GrowndSensor : MonoBehaviour
     public Rigidbody2D rigidBody;
     public float jumpDamage = 5;
     private PlayerControl playerControl;
+    public bool canDoubleJump = true;
     void Awake()
     {
         rigidBody = GetComponentInParent<Rigidbody2D>();
@@ -20,6 +21,7 @@ public class GrowndSensor : MonoBehaviour
         if(collider.gameObject.layer == 3)
         {
             isGrounded = true;
+            canDoubleJump = true;
             //Debug.Log(collider.gameObject.name); --> esto hace que se vea en la consola todo bloque que pisa
         }
         else if(collider.gameObject.layer == 6)

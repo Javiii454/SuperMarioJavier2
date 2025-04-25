@@ -16035,6 +16035,7 @@ MonoBehaviour:
   isGrounded: 0
   rigidBody: {fileID: 0}
   jumpDamage: 5
+  canDoubleJump: 1
 --- !u!61 &583826929
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21367,6 +21368,17 @@ MonoBehaviour:
   direction: 0
   playerSpeed: 4.5
   jumpForce: 12
+  _dashForce: 20
+  _dashDuration: 0.2
+  _dashCooldwon: 1
+  _attackDamage: 10
+  _attackRadius: 0.66
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  hitBoxPosition: {fileID: 1726610418}
+  _baseChargedAttackDamage: 15
+  _maxChargedAttackDamage: 40
   jumpSFX: {fileID: 8300000, guid: bd08923515cae004691633541be7fcb0, type: 3}
   deathSFX: {fileID: 8300000, guid: 5cb90e752c8a67e4c9f909a86f4cda9d, type: 3}
   bulletSpawn: {fileID: 977801513}
@@ -21515,6 +21527,7 @@ Transform:
   m_Children:
   - {fileID: 583826927}
   - {fileID: 977801513}
+  - {fileID: 1726610418}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &787543762
@@ -50838,6 +50851,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1726610417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1726610418}
+  m_Layer: 0
+  m_Name: AttackHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1726610418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726610417}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.937, y: 0.452, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 787543761}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1728073238
 GameObject:
   m_ObjectHideFlags: 0

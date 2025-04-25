@@ -57,10 +57,10 @@ public class Enemy : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        
+
         _audioSource.PlayOneShot(hitSFX);
         Debug.Log("Daño recibido?");
-        currentHealth-= damage;
+        currentHealth-= (int) damage;
         healthBar.value = currentHealth;
         
 
